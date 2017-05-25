@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <title>Aparcamientos</title>
+      <!----sus biblios---->
+      <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+      <link href="css/style.css" rel='stylesheet' type='text/css' />
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="keywords" content="Blogname Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <!--mis biblios -->
+      <script type="text/javascript" src="aparcamientos.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+     
+      <link href="aparcamientos.css" rel='stylesheet' type='text/css' />
+      <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+      <link type= "text/css" rel="stylesheet" href="jquery-ui/jquery-ui.css">
+      <script type= "text/javascript" src="jquery-ui/jquery-ui.js"></script>
+      <link type= "text/css" rel="stylesheet" href="leaflet/leaflet.css">
+	  <script type="text/javascript" src="leaflet/leaflet.js"></script>
+	  <script type="text/javascript"  src="js/docs.min.js"></script>
+	   <!--<script type="text/javascript"  src="css/bootstrap.css"></script> -->
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	   <script type="text/javascript" src="github/github.js"></script>
+      <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+   </head>
+   <body style="background: url('images/fondo.jpg')no-repeat 0px 0px;">
+      <!--Comienzo de banner -->
+      <div class="banner">
+         <div class="header">
+            <div class="container">
+               <div class="logo">
+                  <p> ELPARKING </p>
+               </div>
+               <!-- MENU de arriba a la derecha -->
+               <div class="top-menu">
+                  <span class="menu"> </span>
+                  <ul>
+                     <li class="active"><a href="index.html">HOME</a></li>
+                     <li><a href="contact.html">CONTACT</a></li>
+                     <li><a href="terms.html">TERMS</a></li>
+                     <div class="clearfix"> </div>
+                  </ul>
+               </div>
+               <div class="clearfix"></div>
+            </div>
+         </div>
+         <!--TITULO-->
+         <div class="container">
+            <div class="banner-head">
+               <h1>Eres residente y estas cansado de tardar horas en buscar aparcamiento? </h1>
+               <h2>Ya has encontrado tu solución!</h2>
+            </div>
+            <div class="banner-links">
+               <button type="button" id="button-principal" class="button-menu"> PRINCIPAL </button>
+               <button type="button" id="button-colecciones" class="button-menu"> COLECCIONES </button>
+               <button type="button" id="button-instalaciones" class="button-menu"> INSTALACIONES </button>
+                <button type="button" id="button-guardar" class="button-menu"> GUARDAR COL. </button>
+               <button type="button" id="button-cargar" class="button-menu"> CARGAR COL. </button>
+            </div>
+         </div>
+      </div>
+      <!---final del banner-->
+      <div id="menu">
+        
+         <div id="formulario-git" class="col-xs-2 col-md-2" hidden="true">
+            <div id="rest-form-guardar" hidden="true" >
+            <span> Token:</span><input id="token" type="password" name="token" value="" size="36" />
+               <span>Repositorio : </span><input id="repositorio" type="text" name="Repositorio" value="" size="36" /></br>
+               <span>Fichero: </span><input id="fichero" type="text" name="fichero" value="" size="18" />
+               <button id="guardar" type="button">Guardar!</button>
+            </div>
+            <div id="rest-form-cargar" hidden="true">
+               <span> Token:</span><input id="token2" type="password" name="token2" value="" size="36" />
+               <span>Repositorio : </span><input id="repositorio2" type="text" name="Repositorio2" value="" size="36" /></br>
+               <span>Fichero: </span><input id="fichero2" type="text" name="fichero2" value="" size="18" />
+              
+               
+               <button id="cargar" type="button">Cargar!</button>
+            </div>
+         </div>
+      </div>
+
+
+      <div id="pantalla-principal">
+         <div id="mapid" class="col-xs-12 col-md-6" style="width: 700px; height: 350px; "></div>
+         <div id="getbutton" class="col-xs-2 col-md-2">
+            <button type="button" id="get">Lista de aparcamientos</button>
+         </div>
+         <div id="listas" class="col-xs-12 col-md-6" hidden="true">
+
+
+            <div id="park-list"  class="col-xs-12"></div>
+            <div id="current-collection1" class="col-xs-12">
+               <p>
+                  <span> COLECCION ACTUAL: </span>
+                  <span class="nombrecoleccion"></span>
+               </p>
+               <ul class="current-collection-list"></ul>
+            </div>
+         </div>
+         <div id="park-info" class="col-xs-12 col-md-12">
+         	
+            <div id="current-park" class="col-xs-12 col-md-4" hidden="true"></div>
+
+		<div id="myCarousel" class="carousel slide col-xs-12 col-md-8" data-ride="carousel" hidden="true">
+          <ol class="carousel-indicators"></ol>
+  				<div class="carousel-inner" role="listbox"></div>
+          <a id="leftbutton" class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a id="rightbutton" class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+
+         </div>
+         <a alt="Arriba" href="#banner" rel="nofollow">
+            <div id="scrollToTop"></div>
+         </a>
+
+      </div>
+
+
+
+      <div id="pantalla-colecciones" hidden="true">
+         <div id="park-list2" class="overflow col-md-3 col-sm-4"></div>
+         <div id="collection-list" class="col-md-3 col-sm-4">
+            <div id="formulario" class="col-md-12 col-sm-12">
+               <label for="tags" style="color: #191970">Nombre nueva coleccion: </label>
+               <input id="tags" style="color: black;">
+               <button id="crear" style="color: black;">Crear!</button>
+            </div>
+            <p style="color: #191970;  padding-left:6%;"> COLECCIONES </p>
+            <ul class="collections"></ul>
+         </div>
+         <div id="current-collection2" class="col-md-3 col-sm-4">
+            <p>
+               <span style="color: #191970;"> COLECCION ACTUAL: </span>
+               <span class="nombrecoleccion"></span>
+            </p>
+            <ul class="current-collection-list"></ul>
+         </div>
+      </div>
+
+   <div id="pantalla-instalaciones" hidden="true">
+         <div id="instalaciones" class="col-md-8 col-sm-12">
+            
+
+
+         </div>
+         <div id="usuarios-google-asigandos" class = "col-md-3 col-sm-4"> 
+         <p style="direction: ltr;">Usuarios asigandos a esta instalación: </p>
+            
+          </div>   
+         <div id= "lista-usuarios-GOOGLE" class ="col-md-3 col-sm-4"> Lista Usuarios Google:
+         <div id="boton-añadir-usuarios">
+         <button id="añadir" style="color: black;">Añadir usuarios</button>
+            </div>
+            </div>
+
+
+           
+         </div>
+      
+   
+   </body>
+</html>
